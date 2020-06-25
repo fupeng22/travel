@@ -1,10 +1,10 @@
 <template>
     <div class="icons">
-        <swiper >
+        <swiper  :options="swiperOptions" v-if="pages.length">
             <swiper-slide v-for="(page,index) of pages" :key="index">
             <div class="icon" v-for="item of page" :key="item.id">
                 <div class="icon-img">
-    <img class="icon-img-content" :src="item.imgUrl"/>
+                    <img class="icon-img-content" :src="item.imgUrl"/>
                 </div>
                 
                 <p class="icon-desc">{{item.desc}}</p>
@@ -16,51 +16,21 @@
 <script>
 export default {
     name: "HomeIcons",
-    data (){
+    props:{
+        list:Array
+    },
+    data () {
         return {
-            iconList: [{
-                id: '0001',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc: '景点门票'
-            }, {
-                id: '0002',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png',
-                desc: '滑雪季'
-            }, {
-                id: '0003',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/8c/47630407f70e8302.png',
-                desc: '泡温泉'
-            }, {
-                id: '0004',
-                imgUrl: 'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/201912/9480e99a101564a22dfff0c4b9d0861c.png',
-                desc: '动植物园'
-            }, {
-                id: '0005',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png',
-                desc: '景点门票'
-            }, {
-                id: '0006',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png',
-                desc: '滑雪季'
-            }, {
-                id: '0007',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-                desc: '泡温泉'
-            },{
-                id: '0008',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/8c/47630407f70e8302.png',
-                desc: '动植物园'
-            }, {
-                id: '0009',
-                imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png',
-                desc: '一日游'
-            }]
+            swiperOptions: {
+                autoplay:false,
+                loop:true
+            }
         }
     },
     computed: {
         pages() {
             const pages= []
-            this.iconList.forEach((item,index) => {
+            this.list.forEach((item,index) => {
                 const page= Math.floor(index / 8)
                 if(!pages[page]) {
                     pages[page]= []
@@ -80,33 +50,33 @@ export default {
         padding-bottom :50%
     .icons
         margin-top :.1rem
-        .icon
-            position :relative
-            overflow :hidden
-            float :left
-            width :25%
-            height :0
-            padding-bottom :25%
-            .icon-img
-                position :absolute
-                top :0
-                left :0
-                right :0
-                bottom :.44rem
-                box-sizing :border-box
-                padding :.1rem
-                .icon-img-content
-                    height :100%
-                    display :block
-                    margin :0 auto
-            .icon-desc
-                position :absolute
-                bottom  :0
-                left :0
-                right :0
-                height :.44rem
-                line-height :.44rem
-                color :$darkTextColor
-                text-align :center
-                ellipsis()
+    .icon
+        position :relative
+        overflow :hidden
+        float :left
+        width :25%
+        height :0
+        padding-bottom :25%
+        .icon-img
+            position :absolute
+            top :0
+            left :0
+            right :0
+            bottom :.44rem
+            box-sizing :border-box
+            padding :.1rem
+            .icon-img-content
+                height :100%
+                display :block
+                margin :0 auto
+        .icon-desc
+            position :absolute
+            bottom  :0
+            left :0
+            right :0
+            height :.44rem
+            line-height :.44rem
+            color :$darkTextColor
+            text-align :center
+            ellipsis()
 </style>
