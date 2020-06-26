@@ -3,7 +3,7 @@
     <!-- <img src="./assets/logo.png"> -->
     <keep-alive>
     <router-view/>
-    </keep-alive>>
+    </keep-alive>
   </div>
 </template>
 
