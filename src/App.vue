@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <keep-alive>
-    <router-view/>
+    <keep-alive exclude="Detail">
+      <router-view/>
     </keep-alive>
   </div>
 </template>
